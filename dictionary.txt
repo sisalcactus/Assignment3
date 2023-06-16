@@ -1,0 +1,9 @@
+red
+gold
+ruby
+diamond
+black
+x
+sun
+sword
+scarlet
