@@ -8,9 +8,9 @@ keyword <- sample(dictionary$V1, 1)
 dictionary <- read.table("dictionary.txt", stringsAsFactors = FALSE)
 keyword <- sample(dictionary$V1, 1)
 
-print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 1 letter to begin your guess."))
+print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 1 letter to begin your guess. You are allowed 10 guesses."))
 
-i <- 5
+i <- 10
 
 past_guesses <- c()
 
