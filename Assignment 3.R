@@ -11,8 +11,6 @@ repeat{
   if ((grepl("[A-Za-z]", guess)) &
       (nchar(guess) == 1)){
     break
-  } else {
-    print("Invalid input. Please ensure what you type is exactly one letter.")
   }
 }
 
