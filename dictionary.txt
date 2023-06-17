@@ -1,9 +1,9 @@
 red
-gold
+silver
 ruby
-diamond
+pearl
 black
-x
+y
 sun
-sword
+shield
 scarlet
