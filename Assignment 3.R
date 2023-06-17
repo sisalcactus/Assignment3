@@ -6,40 +6,54 @@ keyword <- sample(dictionary$V1, 1)
 
 print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 1 letter to begin your guess."))
 
-# creating a functions
+# first guess
 
-guessmaker <- function(){repeat{
+repeat{
   guess <- readline(prompt = "Please enter a letter: ")
   if ((grepl("[A-Za-z]", guess)) &
       (nchar(guess) == 1)){
     break
   }
 }
-}
 
-# first guess
-guessmaker()
 
-# check if the guess is a letter in the keyword
+# check if the first guess is a letter in the keyword
 
-as.character(guess)
+guess <- as.character(guess)
 
 guess_nocaps <- tolower(guess)
 
 keyword <- as.character(keyword)
 
 letters <- unlist(strsplit(keyword, ""))
-
+  
 i <- 5
 
 if(guess_nocaps %in% letters){
-    print(paste(guess_nocaps, "is in the secret word. Great work."))
-  guessmaker()
+    print(paste(guess_nocaps, "is in the secret word. Great work.")) # can specify the exact location using which()
+  
+  repeat{
+    guess <- readline(prompt = "Please enter a letter: ")
+    if ((grepl("[A-Za-z]", guess)) &
+        (nchar(guess) == 1)){
+      break
+    }
+  }
+  
 } else {
   print(paste("Not that one. Please try another. You have", i, "tries."))
   i <- i - 1
-  guessmaker()
+  
+  repeat{
+    guess <- readline(prompt = "Please enter a letter: ")
+    if ((grepl("[A-Za-z]", guess)) &
+        (nchar(guess) == 1)){
+      break
+    }
+  }
+  
 }
+
 
 # repeat{
 # tries <- c(1, 2, 3, 4, 5)
