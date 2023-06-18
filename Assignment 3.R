@@ -51,7 +51,7 @@ while(i>0){
   }
   
   if(i == 0){
-    print("You lost.")
+    print(paste("You lost. The secret word was", keyword, "."))
   }
 }
 print("Play again.")
