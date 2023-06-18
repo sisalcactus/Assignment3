@@ -36,7 +36,7 @@ while(i>0){
   letters <- unlist(strsplit(keyword, ""))
   
   if(guess_nocaps %in% letters){
-    print(paste(guess_nocaps, "is in spot", which(guess_nocaps == letters), "of the secret word. Great work."))
+    print(paste("Correct.", guess_nocaps, "is in spot", which(guess_nocaps == letters), "of the secret word. Great work. You have", i, "tries left."))
     
   } else {
     i <- i-1
