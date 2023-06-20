@@ -13,7 +13,8 @@ print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 
 # 3. Setting the conditions for when the game starts/restarts ####
 i <- 10               # this is an arbitrary value to concisely represent the number of tries left (10 at the beginning of the game)
 
-past_guesses <- c()   # this creates a new vector, allowing us to later update the repertoire of guesses the player has already made with each new guess
+right_guesses <- c()   # this creates a new vector, allowing us to later update the repertoire of guesses the player has already made with each new guess
+wrong_guesses <- c()
 
 # 4. Creating the loop for the game to take place continuously until the player wins or loses ####
 while(i>0){           # setting i as greater than 0; this way, the reader will stay in the game (from being prompted to enter a letter to winning or losing) until they run out of tries (i equalling 0 means 0 tries left)
@@ -34,20 +35,35 @@ while(i>0){           # setting i as greater than 0; this way, the reader will s
   
   keyword_letters <- unlist(strsplit(keyword, ""))          # this is needed to split the keyword into its constituent letters so we can check if the inputted letter is one from in the secret keyword
 
+  right_guesses <- append(right_guesses, guess_nocaps[guess_nocaps %in% keyword_letters])
+  wrong_guesses <- append(wrong_guesses, guess_nocaps[!guess_nocaps %in% keyword_letters])
+  
+  # this is needed to update the vector of guessed letters each time the player makes a new guess (correct or incorrect) so we can later check if they guessed all the letters in the keyword (and therefore win)
+  
   if(guess_nocaps %in% keyword_letters){
     print(paste("Correct.", guess_nocaps, "is in spot", which(guess_nocaps == keyword_letters), "of the secret word. Great work. You have", i, "tries left."))
-  } else {
+    print(paste("The correct letters you already used include:"))
+    print(right_guesses)
+    if(!i==10){
+      print(paste("The incorrect letters you already used include:"))
+      print(wrong_guesses)
+    }
+    } else {
     i <- i-1
     print(paste(guess_nocaps, "is not in the secret word. You have", i, "tries left."))
+    print(paste("The incorrect letters you already used include:"))
+    print(wrong_guesses)
+    if(length(right_guesses) != 0){
+      print(paste("The correct letters you already used include:"))
+      print(right_guesses)
+    }
   }
   # the above if-else block is to check if the guessed letter is in the secret keyword
   # if it is, we want to a) tell the player they guessed correctly and b) use the which() function to tell them the spot (through indexing) in the keyword that the letter is in (e.g., "h" is in spot 2 of the keyword "shield") 
   # if it is not, we want to tell the player they did not guess correctly and deduct a try each time they input a letter not found in the keyword
+
   
-  past_guesses <- append(past_guesses, guess_nocaps)
-  # this is needed to update the vector of guessed letters each time the player makes a new guess (correct or incorrect) so we can later check if they guessed all the letters in the keyword (and therefore win)
-  
-  if(all(keyword_letters %in% past_guesses)){
+  if(all(keyword_letters %in% right_guesses)){
     print(paste("You won!", keyword, "is indeed the secret word!"))
     break
   }
