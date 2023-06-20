@@ -40,19 +40,19 @@ while(i>0){           # setting i as greater than 0; this way, the reader will s
   
   if(guess_nocaps %in% keyword_letters){
     print(paste("Correct.", guess_nocaps, "is in spot", which(guess_nocaps == keyword_letters), "of the secret word. Great work. You have", i, "tries left."))
-    print(paste("The correct letters you already used include:"))     # this line and the line above are needed to list all the correct guesses made so far in the game
+    print(paste("Your correctly guesses letters include:"))     # this line and the line above are needed to list all the correct guesses made so far in the game
     print(right_guesses)
     if(!i==10){
-      print(paste("The incorrect letters you already used include:")) # we need this inner if block so we don't display these contained messages if the user has not guessed any letters incorrectly so far in the game (we only display if the player guessed incorrectly at least once, meaning that i, or the number of tries left, would no longer equal 10)
+      print(paste("Your incorrectly guessed letters include:")) # we need this inner if block so we don't display these contained messages if the user has not guessed any letters incorrectly so far in the game (we only display if the player guessed incorrectly at least once, meaning that i, or the number of tries left, would no longer equal 10)
       print(wrong_guesses)
     }
     } else {
     i <- i-1
     print(paste(guess_nocaps, "is not in the secret word. You have", i, "tries left."))
-    print(paste("The incorrect letters you already used include:"))   # this line and the line above are needed to list all the incorrect guesses made so far in the game
+    print(paste("Your incorrectly guessed letters include:"))   # this line and the line above are needed to list all the incorrect guesses made so far in the game
     print(wrong_guesses)
     if(length(right_guesses) != 0){
-      print(paste("The correct letters you already used include:"))
+      print(paste("Your correctly guesses letters include:"))
       print(right_guesses)                                            # we need this inner if block so we don't display these contained messages if the user has not guessed any correct letters so far in the game (in which case the length of the vector of correct guesses is 0)
     }
   }
