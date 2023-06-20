@@ -6,7 +6,7 @@ dictionary <- read.table("dictionary.txt", stringsAsFactors = FALSE)  # this is 
 keyword <- sample(dictionary$V1, 1)                                   # this is needed to sample a random word from the dictionary
 
 # 2. Prompting the player to start the game ####
-print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 1 letter to begin your guess. You are allowed 10 guesses."))
+print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 1 letter to begin your guess. You are allowed 10 guesses. Note that you will LOSE a try for guessing the same letter again (since you're given all letters you've inputted with each new guess)."))
                       # nchar() is needed to determine and display the number of characters of the word
                       # this print() function is needed so instructions and rule are displayed as a message
 
@@ -35,8 +35,8 @@ while(i>0){           # setting i as greater than 0; this way, the reader will s
   
   keyword_letters <- unlist(strsplit(keyword, ""))          # this is needed to split the keyword into its constituent letters so we can check if the inputted letter is one from in the secret keyword
 
-  right_guesses <- append(right_guesses, guess_nocaps[guess_nocaps %in% keyword_letters])  # this is needed to update the vector of correctly guessed letters each time the player makes a new guess so we can later check if they guessed all the letters in the keyword (and therefore win) and display, after each guess, all letters correctly guessed so far
-  wrong_guesses <- append(wrong_guesses, guess_nocaps[!guess_nocaps %in% keyword_letters]) # this is needed to update the vector of incorrectly guessed letters each time the player makes a new guess so we can display, after each guess, all letters incorrectly guessed so far
+  right_guesses <- unique(append(right_guesses, guess_nocaps[guess_nocaps %in% keyword_letters]))  # this is needed to update the vector of correctly guessed letters each time the player makes a new guess so we can later check if they guessed all the letters in the keyword (and therefore win) and display, after each guess, all letters correctly guessed so far
+  wrong_guesses <- unique(append(wrong_guesses, guess_nocaps[!guess_nocaps %in% keyword_letters])) # this is needed to update the vector of incorrectly guessed letters each time the player makes a new guess so we can display, after each guess, all letters incorrectly guessed so far
   
   if(guess_nocaps %in% keyword_letters){
     print(paste("Correct.", guess_nocaps, "is in spot", which(guess_nocaps == keyword_letters), "of the secret word. Great work. You have", i, "tries left."))
