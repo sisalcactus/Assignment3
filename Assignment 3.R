@@ -6,7 +6,7 @@ dictionary <- read.table("dictionary.txt", stringsAsFactors = FALSE)  # this is 
 keyword <- sample(dictionary$V1, 1)                                   # this is needed to sample a random word from the dictionary
 
 # 2. Prompting the player to start the game ####
-print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 1 letter to begin your guess. You are allowed 10 guesses. Note that you will LOSE a try for guessing the same letter again (since you're given all letters you've inputted with each new guess and we don't like making the same mistake twice.)."))
+print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 1 letter to begin your guess. You are allowed 10 guesses. Note that you will LOSE a try for guessing the same letter again (since you're given all letters you've inputted with each new guess)."))
                       # nchar() is needed to determine and display the number of characters of the word
                       # this print() function is needed so instructions and rule are displayed as a message
 
