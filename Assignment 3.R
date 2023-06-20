@@ -57,5 +57,6 @@ while(i>0){           # setting i as greater than 0; this way, the reader will s
     print(paste0("You lost. The secret word was ", keyword, "."))
   }
   # the above if block is needed for the case where the player enters too many letters not in the secret keyword (in other words, i is 0 since i means the number of tries left) and so loses the game
-}
+  # paste0() is chosen as we don't want a space between keyword and the period in the displayed message
+} # the while loop ends here as we only want the components inside the loop to repeat (and only display the next and final message when the player has won or lost)
 print("Play again.") # this is displayed to prompt the reader to play another round regardless of whether they win or lose
