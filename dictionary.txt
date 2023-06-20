@@ -3,7 +3,6 @@ silver
 ruby
 pearl
 black
-xy
 sun
 shield
 scarlet
