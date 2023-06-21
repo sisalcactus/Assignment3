@@ -2,8 +2,8 @@
 # Assignment 3
 
 # 1. Loading and sampling from the dictionary ####
-dictionary <- read.table("dictionary.txt", stringsAsFactors = FALSE)  # this is needed to read and load the dictionary (from which the secret keyword is selected), we have stringsAsFactors as false to make sure the keywords are not factors
-keyword <- sample(dictionary$V1, 1)                                   # this is needed to sample a random word from the dictionary (column reference is V1 as default)
+dictionary <- read.table("dictionary.txt")  # this is needed to read and load the dictionary (from which the secret keyword is selected)
+keyword <- sample(dictionary$V1, 1)         # this is needed to sample a random word from the dictionary (column reference is V1 as default)
 
 # 2. Prompting the player to start the game ####
 print(paste("Welcome to Hangman! This word has", nchar(keyword), "letters. Type 1 letter to begin your guess."))
