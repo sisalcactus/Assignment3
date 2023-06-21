@@ -17,7 +17,7 @@ right_guesses <- c()  # this creates a new vector, allowing us to later update t
 wrong_guesses <- c()  # this creates a new vector, allowing us to later update the repertoire of guesses the player has already incorrectly made with each new guess
 
 # 4. Creating the loop for the game to take place continuously until the player wins or loses ####
-while(i>0){           # setting i as greater than 0; this way, the reader will stay in the game (from being prompted to enter a letter to winning or losing) until they run out of tries (i equalling 0 means 0 tries left)
+while(i>0){           # setting i as greater than 0; this way, the reader will stay in the game (from being prompted to enter a letter to winning or losing) until they run out of tries (where i would equal 0, meaning 0 tries left)
   
   repeat{
     guess <- readline(prompt = "Please enter a letter: ")   # this is needed to prompt the player to enter a letter (denoted by "guess")
